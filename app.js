@@ -118,7 +118,7 @@ function afterPrompt(answers) {
 
         console.log(html)
     }
-    fs.appendFileSync("output/team.html", html);
+    fs.writeFileSync("output/team.html", html);
 }
 
 promptUser().then(afterPrompt);
