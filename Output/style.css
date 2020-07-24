@@ -1,0 +1,10 @@
+.team-heading {
+    background: red;
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.card {
+    margin: 12px;
+    width: 30%;
+}
