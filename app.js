@@ -15,6 +15,9 @@ const render = require("./lib/htmlRenderer");
 const Employee = require("./lib/Employee");
 
 
+// Write code to use inquirer to gather information about the development team members,
+// and to create objects for each team member (using the correct classes as blueprints!)
+
 function promptUser() {
     return inquirer.prompt([{
             type: "input",
@@ -30,11 +33,6 @@ function promptUser() {
             type: "input",
             name: "email",
             message: "New Employee's email?"
-        },
-        {
-            type: "input",
-            name: "phone",
-            message: "New Employee's phone?"
         },
         {
             type: "list",
@@ -89,15 +87,15 @@ function afterPrompt(answers) {
 
     switch (answers.role) {
         case "Manager":
-            const manager = new Manager(answers.name, answers.id, answers.phone, answers.email, answers.OfficeNumber)
+            const manager = new Manager(answers.name, answers.id, answers.email, answers.OfficeNumber)
             employees.push(manager);
             break;
         case "Engineer":
-            const engineer = new Engineer(answers.name, answers.id, answers.phone, answers.email, answers.github);
+            const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
             employees.push(engineer);
             break;
         case "Intern":
-            const intern = new Intern(answers.name, answers.id, answers.phone, answers.email, answers.school)
+            const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
             employees.push(intern);
             break;
     }
@@ -115,13 +113,13 @@ function afterPrompt(answers) {
         // above) and pass in an array containing all employee objects; the `render` function will
         // generate and return a block of HTML including templated divs for each employee!
 
-        render(employees)
+
+        var html = render(employees);
+
+        console.log(html)
     }
-
+    fs.appendFileSync("output/team.html", html);
 }
-
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
 
 promptUser().then(afterPrompt);
 
@@ -143,4 +141,4 @@ promptUser().then(afterPrompt);
 // for the provided `render` function to work! ```
 
 
-//return writeFileAsync("output/team.html", html);
+//return 
